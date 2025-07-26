@@ -8,4 +8,13 @@ const instance = axios.create({
   },
 });
 
+//인스턴스 설정할 때 자동으로 토큰 붙이기
+instance.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export default instance;
