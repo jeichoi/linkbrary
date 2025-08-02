@@ -1,0 +1,22 @@
+header.wrapper {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  height: 113px;
+  background-color: #181616;
+  padding: 0 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header.wrapper .logo {
+  display: block;
+}
+header.wrapper Button {
+  background-color: var(--gray-800);
+  color: var(--color-white);
+  border-radius: 25px;
+  width: 95px;
+  height: 49px;
+  border: none;
+  font: var(--font-body-semibold-18);
+}

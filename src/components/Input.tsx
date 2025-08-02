@@ -1,24 +1,12 @@
 "use client";
 
 import { InputHTMLAttributes, forwardRef } from "react";
-import clsx from "clsx";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <input
-        ref={ref}
-        className={clsx(
-          "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+const Input = forwardRef<HTMLInputElement, InputProps>(({ ...props }, ref) => {
+  return <input ref={ref} {...props} />;
+});
 
 Input.displayName = "Input";
 

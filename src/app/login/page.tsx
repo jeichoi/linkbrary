@@ -20,7 +20,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
-  const { user, login } = useAuth();
+  const { user, handleLogin } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,13 +31,10 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      await login(values);
+      await handleLogin(values);
       router.push("/linklist");
     } catch (err) {
-      // toast(
-      //   "error",
-      //   "로그인에 실패했습니다. 이메일 또는 비밀번호를 확인하세요."
-      // );
+      window.alert("로그인에 실패했습니다. 이메일 또는 비밀번호를 확인하세요.");
       console.error(err);
     }
   };
@@ -49,13 +46,13 @@ const LoginPage = () => {
   }, [user, router]);
 
   return (
-    <div className="max-w-md mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">로그인</h1>
-      <Button type="button" variant="outline" className="w-full mb-4">
-        <span className="ml-2">구글로 시작하기</span>
+    <div>
+      <h1>로그인</h1>
+      <Button type="button">
+        <span>구글로 시작하기</span>
       </Button>
-      <div className="text-center text-gray-500 mb-4">또는</div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <div>또는</div>
+      <form onSubmit={handleSubmit}>
         <Input
           id="email"
           name="email"
@@ -73,22 +70,13 @@ const LoginPage = () => {
             value={values.password}
             onChange={handleChange}
           />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500"
-          >
+          <button type="button" onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? "숨기기" : "보기"}
           </button>
         </div>
-        <Button type="submit" className="w-full">
-          로그인
-        </Button>
-        <p className="text-sm text-center">
-          회원이 아니신가요?{" "}
-          <Link href="/signup" className="text-blue-600">
-            회원가입하기
-          </Link>
+        <Button type="submit">로그인</Button>
+        <p>
+          회원이 아니신가요? <Link href="/signup">회원가입하기</Link>
         </p>
       </form>
     </div>

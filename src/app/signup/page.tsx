@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthProvider";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 interface RegisterForm {
   name: string;
@@ -22,20 +23,26 @@ const RegisterPage = () => {
   });
 
   const router = useRouter();
-  const { user, login } = useAuth();
+
+  //회원가입 성공 후 자동으로 로그인하려고
+  // 커스텀 훅(useAuth)을 사용하여 user와 handleLogin을 가져오는 부분
+  const { user, handleLogin } = useAuth();
+
   const TEAM_ID = "16-%EC%B5%9C%EC%9E%AC%EC%9D%B4";
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    //입력 필드가 여러 개이기 때문에 각각의 onChange 핸들러를 따로 만들지 않고 하나로 처리하기 위해
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // if (values.password !== values.passwordRepeat) {
-    //   toast("warn", "비밀번호가 일치하지 않습니다.");
-    //   return;
-    // }
+    if (values.password !== values.passwordRepeat) {
+      window.alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
 
     try {
       const res = await fetch(
@@ -57,10 +64,10 @@ const RegisterPage = () => {
         throw new Error("회원가입 실패");
       }
 
-      await login({ email: values.email, password: values.password });
+      await handleLogin({ email: values.email, password: values.password });
       router.push("/");
     } catch (err) {
-      // toast("error", "회원가입에 실패했습니다.");
+      window.alert("회원가입에 실패했습니다.");
       console.error(err);
     }
   };
@@ -72,13 +79,13 @@ const RegisterPage = () => {
   }, [user, router]);
 
   return (
-    <div className="max-w-md mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">회원가입</h1>
-      <Button type="button" variant="outline" className="w-full mb-4">
-        <span className="ml-2">구글로 시작하기</span>
+    <div>
+      <h1>회원가입</h1>
+      <Button type="button">
+        <span>구글로 시작하기</span>
       </Button>
-      <div className="text-center text-gray-500 mb-4">또는</div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <div>또는</div>
+      <form onSubmit={handleSubmit}>
         <Input
           id="name"
           name="name"
@@ -111,14 +118,10 @@ const RegisterPage = () => {
           value={values.passwordRepeat}
           onChange={handleChange}
         />
-        <Button type="submit" className="w-full">
-          회원가입
-        </Button>
-        <p className="text-sm text-center">
-          이미 회원이신가요?{" "}
-          {/* <Link href="/login" className="text-blue-600">
-            로그인하기
-          </Link> */}
+        <Button type="submit">회원가입</Button>
+        <p>
+          이미 회원이신가요?
+          <Link href="/login">로그인하기</Link>
         </p>
       </form>
     </div>

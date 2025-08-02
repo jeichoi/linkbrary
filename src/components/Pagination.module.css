@@ -1,0 +1,14 @@
+.paginationWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.pageButton {
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
