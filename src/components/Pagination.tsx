@@ -33,10 +33,11 @@ export default function Pagination({
     <nav className={styles.paginationWrapper}>
       {/* 이전 버튼 */}
       <button
+        className={styles.navButton}
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage <= 1}
       >
-        이전
+        &lt;
       </button>
 
       {/* 페이지 번호 버튼 */}
@@ -55,10 +56,11 @@ export default function Pagination({
 
       {/* 다음 버튼 */}
       <button
+        className={styles.navButton}
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage >= totalPages}
       >
-        다음
+        &gt;
       </button>
     </nav>
   );

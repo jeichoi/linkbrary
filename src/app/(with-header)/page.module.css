@@ -5,11 +5,25 @@ section.mainWrapper article.mainTop {
   background-color: #181616;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 article.mainTop .mainImg {
   max-width: 100%;
   height: auto;
+}
+
+article.mainTop .mainBtn {
+  position: absolute;
+  width: 146px;
+  height: 53px;
+  background-color: var(--color-white);
+  border-radius: 999px;
+  font: var(--font-body-semibold-18);
+  top: 370px;
+  border: none;
+  padding-top: 6px;
+  cursor: pointer;
 }
 
 article.mainTop .mainFont span {
@@ -63,4 +77,3 @@ article.mainGray div.wrapper {
 article.mainGray {
   background-color: var(--gray-100);
 }
-

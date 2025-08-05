@@ -35,9 +35,13 @@ export default function AddFolderModal() {
         value={folderName}
         onChange={(e) => setFolderName(e.target.value)}
         placeholder="내용 입력"
+        className="content"
+        type="content"
       />
 
-      <button onClick={handleAdd}>추가하기</button>
+      <Button type="submit" className="submit" onClick={handleAdd}>
+        추가하기
+      </Button>
     </Modal>
   );
 }

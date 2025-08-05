@@ -1,0 +1,14 @@
+
+.folderList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.folderItem {
+  transition: background-color 0.2s ease;
+}
+
+.folderItem:hover {
+  background-color: #eee;
+}

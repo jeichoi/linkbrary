@@ -1,6 +1,6 @@
 export interface Folder {
   id: number;
-  createdAt: string;
+  createdAt?: string;
   name?: string;
   linkCount: number;
 }

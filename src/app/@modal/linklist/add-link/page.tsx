@@ -7,6 +7,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Folder } from "@/types/folder";
 import { runAddLinkCallback } from "@/lib/modalCallback";
 import { Link as LinkType } from "@/types/link";
+import Button from "@/components/Button";
+import { FiCheck } from "react-icons/fi"; // 체크 아이콘 추가 (선택 폴더 표시용)
 
 export default function AddLinkModal() {
   const searchParams = useSearchParams();
@@ -62,26 +64,51 @@ export default function AddLinkModal() {
   };
 
   return (
-    <Modal title="링크 추가">
-      <div>
-        <ul>
-          {folders.map((folder) => (
-            <li key={folder.id}>
-              <label>
-                <input
-                  type="radio"
-                  name="folder"
-                  value={folder.id}
-                  checked={selectedFolder === folder.id}
-                  onChange={() => setSelectedFolder(folder.id)}
-                />
-                {folder.name}
-              </label>
-            </li>
-          ))}
+    <Modal title="폴더에 추가">
+      <div className="modalContent">
+        {/* 링크 주소 */}
+        <p
+          style={{ textAlign: "center", color: "#888", marginBottom: "1.5rem" }}
+        >
+          {linkName}
+        </p>
+
+        {/* 폴더 리스트 */}
+        <ul className="folderList">
+          {folders.map((folder) => {
+            const isSelected = selectedFolder === folder.id;
+            return (
+              <li
+                key={folder.id}
+                className={`folderItem ${isSelected ? "selected" : ""}`}
+                onClick={() => setSelectedFolder(folder.id)}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "12px",
+                  backgroundColor: isSelected ? "#f0f0f0" : "transparent",
+                  cursor: "pointer",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                <span style={{ fontWeight: 500 }}>{folder.name}</span>
+                <span style={{ color: "#999", fontSize: "0.9rem" }}>
+                  {folder.linkCount}개 링크
+                </span>
+                {isSelected && (
+                  <FiCheck style={{ marginLeft: "0.5rem", color: "#333" }} />
+                )}
+              </li>
+            );
+          })}
         </ul>
 
-        <button onClick={handleAdd}>링크추가하기</button>
+        {/* 링크 추가하기 버튼 */}
+        <Button type="submit" className="submit" onClick={handleAdd}>
+          링크 추가하기
+        </Button>
       </div>
     </Modal>
   );

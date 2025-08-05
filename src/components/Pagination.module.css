@@ -1,14 +1,40 @@
 .paginationWrapper {
   display: flex;
-  gap: 8px;
   align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 0;
 }
-.pageButton {
-  font-weight: normal;
-  text-decoration: none;
+
+.pageButton,
+.navButton {
+  all: unset;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  font-size: 16px;
+  color: #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.pageButton:hover,
+.navButton:hover {
+  background-color: #f0f0f0;
 }
 
 .active {
   font-weight: bold;
-  text-decoration: underline;
+  color: #000;
+}
+
+.dots {
+  width: 32px;
+  text-align: center;
+  color: #aaa;
+  user-select: none;
 }

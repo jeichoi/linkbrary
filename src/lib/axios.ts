@@ -17,7 +17,9 @@ const instance = axios.create({
 //request interceptor 서버로 요청 보내기 전에 실행
 //config는 Axios가 실제로 서버에 보낼 요청 정보를 담은 객체
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
+   const token =
+     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   // 로그인, 회원가입 요청일 경우 Authorization 헤더 제거
   // 1) 로그인, 회원가입 요청이면 Authorization 붙이지 않음

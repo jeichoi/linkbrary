@@ -1,0 +1,36 @@
+.wrapper {
+  width: 100%;
+  height: 160px;
+  background-color: var(--gray-200);
+  margin-top: 50px;
+}
+.wrapper section {
+  width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+footer.wrapper div.footerLeft {
+  font: var(--font-body-regular-16);
+  line-height: 140%;
+  text-align: center;
+  color: var(--gray-400);
+}
+
+footer.wrapper div.footerCenter {
+  font: var(--font-body-regular-16);
+  line-height: 140%;
+  text-align: center;
+  color: var(--gray-500);
+}
+
+footer.wrapper div.footerCenter span {
+  padding: 0 10px;
+  cursor: pointer;
+}
+footer.wrapper div.footerRight {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}

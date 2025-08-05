@@ -19,6 +19,18 @@ export default function Home() {
           <span>세상의 모든 정보</span>를<br />
           쉽게 저장하고 관리해 보세요
         </div>
+        <Button
+          className={styles.mainBtn}
+          onClick={() => {
+            if (user) {
+              router.push("/linklist");
+            } else {
+              router.push("/login");
+            }
+          }}
+        >
+          링크 추가하기
+        </Button>
         <Image
           src="/images/main.png"
           alt="main"

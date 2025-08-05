@@ -1,0 +1,147 @@
+section.folderWrapper {
+  width: 100%;
+}
+section div.folderListWrapper {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 1060px;
+  margin: 0 auto;
+}
+section div.folderListWrapper div.folderListInnerWrapper {
+  display: flex;
+  align-items: center;
+  flex: 600px;
+}
+
+.addFolderButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 155px;
+  height: 50px;
+  padding: 10px 20px;
+  background-color: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font: var(--font-body-semibold-16);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  gap: 8px;
+}
+
+.addFolderButton:hover {
+  background-color: #1f1f1f;
+}
+
+.addFolderButton:active {
+  background-color: #141414;
+}
+section.linkWrapper {
+  width: 1060px;
+  margin: 0 auto;
+}
+
+section.linkWrapper div.linkTitleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+section.linkWrapper div.linkTitleWrapper div.linkTitleLeft {
+  display: flex;
+  align-items: center;
+}
+section.linkWrapper div.linkTitleWrapper div.linkTitleLeft h2 {
+  font: var(--font-heading-semibold-32);
+  margin: 50px 10px 50px 0;
+}
+
+section.linkWrapper ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+section.linkWrapper ul li {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  height: 340px;
+  position: relative;
+
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 8px; */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section.linkWrapper ul li div.linkContents {
+  padding: 16px;
+  position: absolute;
+  top: 200px;
+}
+section.linkWrapper ul li div.linkContents .linkContentsTop {
+  display: flex;
+  justify-content: space-between;
+}
+section.linkWrapper ul li div.linkContents .linkContentsTop .actionIcon {
+  cursor: pointer;
+}
+
+section.linkWrapper ul li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+section.linkWrapper ul li img.linkImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+section.linkWrapper ul li a {
+  font: var(--font-heading-semibold-18);
+  color: black;
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+section.linkWrapper ul li a:hover {
+  text-decoration: underline;
+}
+
+section.linkWrapper ul li p.gray {
+  font: var(--font-body-regular-14);
+  color: var(--gray-500);
+}
+
+section.linkWrapper ul li a.title {
+  font: var(--font-body-semibold-18);
+  color: var(--gray-900);
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 텍스트가 넘칠 때 ...으로 표시합니다 */
+  width: 300px;
+  white-space: nowrap;
+  -webkit-line-clamp: 1;
+}
+
+section.linkWrapper ul li p.description {
+  font: var(--font-body-regular-16);
+  color: var(--gray-800);
+  overflow: hidden;
+  text-overflow: ellipsis; /* 텍스트가 넘칠 때 ...으로 표시합니다 */
+  width: 300px;
+  white-space: nowrap;
+  /* -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; */
+  margin-bottom: 10px;
+}
+.editFolder,
+.deleteFolder {
+  cursor: pointer;
+}

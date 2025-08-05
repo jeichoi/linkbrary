@@ -19,6 +19,7 @@ interface AuthContextType {
     password: string;
   }) => Promise<void>;
   handleLogout: () => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 //React의 createContext는 전역적으로 공유할 수 있는 값을 만들 때 사용
@@ -27,6 +28,7 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isPending, setIsPending] = useState(true);
+  const router = useRouter();
 
   const getMe = async (token?: string) => {
     setIsPending(true); //로딩 상태를 true로 바꿔서 데이터를 가져오는 중임을 표시
@@ -56,6 +58,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (token) {
       localStorage.setItem("token", token); // 토큰 저장
       await getMe(token); //방금 로그인한 사용자의 정보를 서버에서 다시 가져옴=>가져온 유저 데이터를 전역 상태(user)에 저장
+      //router.push("/"); // 로그인 후 이동할 경로
     }
   };
 
@@ -65,7 +68,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // 2. 사용자 정보 초기화
     setUser(null);
+    router.push("/");
   };
+
 
   useEffect(() => {
     // localStorage.setItem(key, value)
@@ -87,7 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, isPending, handleLogin, handleLogout }}
+      value={{ user, isPending, handleLogin, handleLogout, setUser }}
     >
       {children}
     </AuthContext.Provider>

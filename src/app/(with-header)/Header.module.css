@@ -7,16 +7,39 @@ header.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 header.wrapper .logo {
   display: block;
 }
-header.wrapper Button {
+
+.wrapperRight {
+  display: flex;
+  gap: 20px;
+}
+
+header.wrapper div.wrapperRight .loginBtn {
   background-color: var(--gray-800);
   color: var(--color-white);
   border-radius: 25px;
-  width: 95px;
+  padding: 0 30px;
   height: 49px;
   border: none;
   font: var(--font-body-semibold-18);
+  cursor: pointer;
+}
+header.wrapper div .profile {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+header.wrapper div .profileName {
+  font: var(--font-body-regular-14);
+  color: var(--color-white);
+  height: 16px;
+  margin-left: 10px;
+}
+header.wrapper div .profileName:hover{
+  color: rgb(179, 179, 179);
 }
